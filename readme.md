@@ -17,6 +17,7 @@ class Dispatcher_Factory implements FactoryInterface
 		$dispatcher = new Castellan();
 
 		$dispatcher->addListener('test.event', array(new Listener_Test, 'event'));
+		$dispatcher->addListener('test.staticEvent', 'Listener::staticEvent');
 
 		return $dispatcher;
 	}
@@ -34,6 +35,8 @@ class Dispatcher_Factory implements FactoryInterface
 class Listener_Example {
 
 	public function event($event) {}
+
+	public static function staticEvent($event) {}
 
 }
 
