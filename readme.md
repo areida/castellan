@@ -1,4 +1,4 @@
-### Castellan ###
+# Castellan
 A simple php event notifier.
 
 ## Example Factory
