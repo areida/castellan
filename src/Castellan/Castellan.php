@@ -25,9 +25,19 @@ class Castellan
 
 	public function addListeners($listeners = array())
 	{
-		foreach ($listeners as $name => $listener)
+		foreach ($listeners as $name => $callbacks)
 		{
-			$this->addListener($name, $listener);
+			if (is_array($callbacks))
+			{
+				foreach ($callbacks as $callback)
+				{
+					$this->addListener($name, $callback);
+				}
+			}
+			else
+			{
+				$this->addListener($name, $listener);
+			}
 		}
 
 		return $this;
