@@ -1,23 +1,20 @@
 # Castellan
 A simple php event notifier.
 
-## Example Factory
+## Example Repository
 
 ```php
 <?php
 
-use Castellan\Castellan;
-use Castellan\Factory\FactoryInterface;
-
-class Dispatcher_Factory implements FactoryInterface
+class Repository_Dispatcher
 {
 
-	public function createDispatcher($listeners = array())
+	public function exampleDispatcher($listeners = array())
 	{
 		$dispatcher = new Castellan();
 
-		$dispatcher->addListener('test.event', array(new Listener_Test, 'event'));
-		$dispatcher->addListener('test.staticEvent', 'Listener::staticEvent');
+		$dispatcher->addListener('example.event', array(new Listener_Example, 'event'));
+		$dispatcher->addListener('example.staticEvent', 'Listener::staticEvent');
 
 		return $dispatcher;
 	}
@@ -53,7 +50,7 @@ class Example
 
 	public function use()
 	{
-		$dispatcher = new Dispatcher_Factory()->createDispatcher()->trigger('example.event');
+		$dispatcher = new Repository_Dispatcher()->exampleDispatcher()->trigger('example.event');
 	}
 
 }
