@@ -1,10 +1,12 @@
 # Castellan
-A simple php event notifier.
+A simple PHP event notifier.
 
 ## Example Repository
 
 ```php
 <?php
+
+use Castellan\Castellan;
 
 class Repository_Dispatcher
 {
@@ -50,7 +52,10 @@ class Example
 
 	public function use()
 	{
-		$dispatcher = new Repository_Dispatcher()->exampleDispatcher()->trigger('example.event');
+		$dispatcher = new Repository_Dispatcher()->exampleDispatcher();
+
+		$dispatcher->trigger('example.event');
+		$dispatcher->trigger('example.staticEvent');
 	}
 
 }
