@@ -36,7 +36,7 @@ class Castellan
 			}
 			else
 			{
-				$this->addListener($name, $listener);
+				$this->addListener($name, $callbacks);
 			}
 		}
 
