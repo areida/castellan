@@ -75,20 +75,18 @@ class Example
 		$dispatcher->trigger('example.event');
 		$dispatcher->trigger('example.staticEvent');
 
-		// Targeted event
-		$target = new TargetObject();
-
-		$dispatcher->trigger('example.targetEvent', $target);
+		// Targeted event. All events should have targets, usually $this or $self
+		$dispatcher->trigger('example.targetEvent', $this);
 
 		// With additional parameters
 		$parameters = array(
 			'param' => 'value',
 		);
 
-		$dispatcher->trigger('example.parameterEvent', $target, $parameters);
+		$dispatcher->trigger('example.parameterEvent', $this, $parameters);
 
-		// Custom event. Pass $this or $self if you need to pass parameters with no target
-		$event = new Castellan\Event('example.customEvent', $target, $parameters);
+		// Custom event
+		$event = new Castellan\Event('example.customEvent', $this, $parameters);
 
 		$dispatcher->trigger($event);
 	}
