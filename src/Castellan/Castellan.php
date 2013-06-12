@@ -70,15 +70,18 @@ class Castellan
 			$event = new Event($nameOrEvent, $target, $parameters);
 		}
 
-		foreach ($this->_listeners[$event->name] as $listener)
+		if (isset($this->_listeners[$event->name]))
 		{
-			if (is_array($listener))
+			foreach ($this->_listeners[$event->name] as $listener)
 			{
-				call_user_func(array($listener[0], $listener[1]), $event);
-			}
-			else
-			{
-				call_user_func($listener, $event);
+				if (is_array($listener))
+				{
+					call_user_func(array($listener[0], $listener[1]), $event);
+				}
+				else
+				{
+					call_user_func($listener, $event);
+				}
 			}
 		}
 
